@@ -12,7 +12,7 @@ Students: Stores students' personal and contact data, as well as information abo
 
 Instructor: Contains the data of the gym's instructors, such as name, telephone number, type of instructor and salary, allowing control of who is qualified to train students on each modality.
 
-Student_Training_File: Records details of students' training, including training days, machines used, number of sets and repetitions, allowing personalized monitoring.
+Student Training File: Records details of students' training, including training days, machines used, number of sets and repetitions, allowing personalized monitoring.
 
 Modality: Defines the types of exercises offered by the gym, such as weight training, crossfit, among others. Each modality is associated with a set of specific activities.
 
