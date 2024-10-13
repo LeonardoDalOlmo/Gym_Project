@@ -10,7 +10,7 @@ The database was designed to meet the operational needs of an academy, reflectin
 
 Students: Stores students' personal and contact data, as well as information about the student's status within the academy (active, inactive).
 
-Instructor: Contains the data of the gym's instructors, such as name, telephone number, type of instructor and salary, allowing control of who is qualified to train students.
+Instructor: Contains the data of the gym's instructors, such as name, telephone number, type of instructor and salary, allowing control of who is qualified to train students on each modality.
 
 Student_Training_File: Records details of students' training, including training days, machines used, number of sets and repetitions, allowing personalized monitoring.
 
