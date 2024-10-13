@@ -5,7 +5,7 @@ This project consists in developing a API using the framework Spring, of languag
 
 We used Postman to test and validate CRUD (Create, Read, Update, Delete) operations.
 
-Database Structure
+Database Structure:
 The database was designed to meet the operational needs of an academy, reflecting the main aspects of student and training management. Below is an explanation of the purpose of each table:
 
 Students: Stores students' personal and contact data, as well as information about the student's level and status within the academy (active, inactive, etc.).
