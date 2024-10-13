@@ -8,7 +8,7 @@ We used Postman to test and validate CRUD (Create, Read, Update, Delete) operati
 Database Structure:
 The database was designed to meet the operational needs of an academy, reflecting the main aspects of student and training management. Below is an explanation of the purpose of each table:
 
-Students: Stores students' personal and contact data, as well as information about the student's level and status within the academy (active, inactive, etc.).
+Students: Stores students' personal and contact data, as well as information about the student's status within the academy (active, inactive).
 
 Instructor: Contains the data of the gym's instructors, such as name, telephone number, type of instructor and salary, allowing control of who is qualified to train students.
 
