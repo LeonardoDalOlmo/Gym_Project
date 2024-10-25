@@ -20,22 +20,29 @@ public class Subscriptions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer subscriptionId;
 
+    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "studentId")
     private Student studentId;
 
+    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "planId")
     private Plan planId;
 
+    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "periodId")
     private Period preiodId;
 
+    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "modalityId")
     private Modality modalityId;
 
+    @Column(nullable = false)
     private Instant subscriptionStartDate = Instant.now();
+
+    @Column(nullable = false)
     private Instant subscriptionEndDate;
 }

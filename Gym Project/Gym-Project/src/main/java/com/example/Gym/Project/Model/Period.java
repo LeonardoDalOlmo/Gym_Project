@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +21,12 @@ public class Period {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer periodId;
+    @Column(nullable = false)
     private String periodName;
-    private String periodStartHour;
-    private String periodEndHour;
+    @Column(nullable = false)
+    private LocalDateTime periodStartHour;
+    @Column(nullable = false)
+    private LocalDateTime periodEndHour;
 
     @ManyToMany
     @JoinTable(

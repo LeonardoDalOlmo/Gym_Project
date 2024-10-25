@@ -21,9 +21,13 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
+    @Column(nullable = false)
     private String studentName;
+    @Column(nullable = false)
     private Integer studentAge;
+    @Column(nullable = false)
     private Integer studentPhone;
+    @Column(nullable = false)
     private StudentStatus studentStatus;
 
     @OneToMany(mappedBy = "studentId")

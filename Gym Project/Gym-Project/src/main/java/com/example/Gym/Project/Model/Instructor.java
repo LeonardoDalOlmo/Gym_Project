@@ -19,12 +19,15 @@ public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer instructorId;
-    @Column(length = 100, nullable = false)
+    @Column(nullable = false)
     private String instructorName;
-    @Column(length = 15)
+    @Column( nullable = false)
     private Integer instructorPhoneNumber;
-    @Column(length = 150)
+    @Column(nullable = false)
     private String instructorDescription;
+    @Column(nullable = false)
+    private Double instructorSalary;
+
 
     @ManyToMany
     @JoinTable(

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -22,8 +24,15 @@ public class Worksheets {
     @JoinColumn(name = "studentId")
     private Student studentId;
 
-    private String worksheetDay;
+    @Column(nullable = false)
+    private LocalDate worksheetDay;
+
+    @Column(nullable = false)
     private String machineDescription;
+
+    @Column(nullable = false)
     private Integer setNumber;
+
+    @Column(nullable = false)
     private Integer repetitionNumber;
 }

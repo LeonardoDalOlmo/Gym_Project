@@ -20,8 +20,11 @@ public class Plan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer planId;
+    @Column(nullable = false)
     private String planName;
+    @Column(nullable = false)
     private String planDescription;
+    @Column(nullable = false)
     private Double planPrice;
 
     @OneToMany(mappedBy = "planId")

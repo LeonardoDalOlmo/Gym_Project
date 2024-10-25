@@ -20,8 +20,11 @@ public class Modality {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer modalityId;
+    @Column(nullable = false)
     private String modalityName;
+    @Column(nullable = false)
     private String modalityDescription;
+    @Column(nullable = false)
     private String modalityDay;
 
     @OneToMany(mappedBy = "modalityId")
