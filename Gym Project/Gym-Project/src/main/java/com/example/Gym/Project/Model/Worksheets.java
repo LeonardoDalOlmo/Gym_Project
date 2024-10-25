@@ -6,27 +6,33 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
 @Entity
-@Table(name = "tb_plan")
-public class Plan {
+@Table(name = "tb_worksheet")
+public class Worksheets {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer planId;
-    @Column(nullable = false)
-    private String planName;
-    @Column(nullable = false)
-    private String planDescription;
-    @Column(nullable = false)
-    private Double planPrice;
+    private Integer worksheetId;
 
-    @OneToMany(mappedBy = "planId")
-    private List<Subscriptions> subscriptionsList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "studentId")
+    private Student studentId;
+
+    @Column(nullable = false)
+    private LocalDate worksheetDay;
+
+    @Column(nullable = false)
+    private String machineDescription;
+
+    @Column(nullable = false)
+    private Integer setNumber;
+
+    @Column(nullable = false)
+    private Integer repetitionNumber;
 }
