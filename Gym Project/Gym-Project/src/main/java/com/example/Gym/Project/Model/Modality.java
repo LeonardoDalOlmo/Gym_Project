@@ -25,10 +25,10 @@ public class Modality {
     @Column(nullable = false)
     private String modalityDescription;
     @Column(nullable = false)
-    private String modalityDay;
+    private List<String> modalityDay;
 
     @OneToMany(mappedBy = "modalityId")
-    private List<Subscriptions> subscriptionsList = new ArrayList<>();
+    private List<Subscription> subscriptionsList = new ArrayList<>();
 
     @ManyToMany(mappedBy = "modalityList")
     private List<Period> periodList;

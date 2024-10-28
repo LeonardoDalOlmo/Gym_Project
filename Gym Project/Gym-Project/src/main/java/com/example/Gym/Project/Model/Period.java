@@ -6,8 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.time.Instant;
 import java.util.List;
 
 @NoArgsConstructor
@@ -24,9 +23,9 @@ public class Period {
     @Column(nullable = false)
     private String periodName;
     @Column(nullable = false)
-    private LocalDateTime periodStartHour;
+    private Instant periodStartHour;
     @Column(nullable = false)
-    private LocalDateTime periodEndHour;
+    private Instant periodEndHour;
 
     @ManyToMany
     @JoinTable(
