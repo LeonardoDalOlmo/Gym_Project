@@ -25,7 +25,7 @@ public class Worksheets {
     private Student studentId;
 
     @Column(nullable = false)
-    private LocalDate worksheetDay;
+    private String worksheetDay;
 
     @Column(nullable = false)
     private String machineDescription;

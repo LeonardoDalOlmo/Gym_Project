@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.security.auth.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class Student {
     private List<Worksheets> worksheetsList = new ArrayList<>();
 
     @OneToMany(mappedBy = "studentId")
-    private List<Subscriptions> subscriptionList = new ArrayList<>();
+    private List<Subscription> subscriptionList = new ArrayList<>();
 
 
 

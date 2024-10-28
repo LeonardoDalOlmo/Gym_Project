@@ -28,5 +28,5 @@ public class Plan {
     private Double planPrice;
 
     @OneToMany(mappedBy = "planId")
-    private List<Subscriptions> subscriptionsList = new ArrayList<>();
+    private List<Subscription> subscriptionsList = new ArrayList<>();
 }

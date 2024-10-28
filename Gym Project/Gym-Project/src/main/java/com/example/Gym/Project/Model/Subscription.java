@@ -14,28 +14,28 @@ import java.time.Instant;
 @Getter
 @Entity
 @Table(name = "tb_subscription")
-public class Subscriptions {
+public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer subscriptionId;
 
-    @Column(nullable = false)
+
     @ManyToOne
     @JoinColumn(name = "studentId")
     private Student studentId;
 
-    @Column(nullable = false)
+
     @ManyToOne
     @JoinColumn(name = "planId")
     private Plan planId;
 
-    @Column(nullable = false)
+
     @ManyToOne
     @JoinColumn(name = "periodId")
     private Period preiodId;
 
-    @Column(nullable = false)
+
     @ManyToOne
     @JoinColumn(name = "modalityId")
     private Modality modalityId;
