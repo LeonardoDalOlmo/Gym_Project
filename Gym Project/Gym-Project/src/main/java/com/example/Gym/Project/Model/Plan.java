@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,10 @@ public class Plan {
     private String planDescription;
     @Column(nullable = false)
     private Double planPrice;
+    @Column(nullable = false)
+    private LocalDateTime planStart = LocalDateTime.now();
+    @Column(nullable = false)
+    private LocalDateTime planEnd = LocalDateTime.now();
 
     @OneToMany(mappedBy = "planId")
     private List<Subscription> subscriptionsList = new ArrayList<>();

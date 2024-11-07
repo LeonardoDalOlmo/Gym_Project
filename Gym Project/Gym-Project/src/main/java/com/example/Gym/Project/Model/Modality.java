@@ -25,7 +25,7 @@ public class Modality {
     @Column(nullable = false)
     private String modalityDescription;
     @Column(nullable = false)
-    private List<String> modalityDay;
+    private List<Days> modalityDay;
 
     @OneToMany(mappedBy = "modalityId")
     private List<Subscription> subscriptionsList = new ArrayList<>();
