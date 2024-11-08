@@ -1,5 +1,6 @@
 package com.example.Gym.Project.DTO;
 
+import com.example.Gym.Project.Model.Days;
 import com.example.Gym.Project.Model.Modality;
 
 import java.util.List;
@@ -9,9 +10,9 @@ public class ModalityDTO {
     private Integer modalityId;
     private String modalityName;
     private String modalityDescription;
-    private List<String> modalityDay;
+    private List<Days> modalityDay;
 
-    public ModalityDTO(Integer modalityId, String modalityName, String modalityDescription, List<String> modalityDay) {
+    public ModalityDTO(Integer modalityId, String modalityName, String modalityDescription, List<Days> modalityDay) {
         this.modalityId = modalityId;
         this.modalityName = modalityName;
         this.modalityDescription = modalityDescription;
@@ -38,7 +39,7 @@ public class ModalityDTO {
         return modalityDescription;
     }
 
-    public List<String> getModalityDay() {
+    public List<Days> getModalityDay() {
         return modalityDay;
     }
 }
