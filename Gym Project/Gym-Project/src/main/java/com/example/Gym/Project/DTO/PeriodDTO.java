@@ -3,14 +3,15 @@ package com.example.Gym.Project.DTO;
 import com.example.Gym.Project.Model.Period;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 public class PeriodDTO {
     private Integer periodId;
     private String periodName;
-    private Instant periodStartHour;
-    private Instant periodEndHour;
+    private LocalDateTime periodStartHour = LocalDateTime.now();
+    private LocalDateTime periodEndHour = LocalDateTime.now();
 
-    public PeriodDTO(Integer periodId, String periodName, Instant periodStartHour, Instant periodEndHour) {
+    public PeriodDTO(Integer periodId, String periodName, LocalDateTime periodStartHour, LocalDateTime periodEndHour) {
         this.periodId = periodId;
         this.periodName = periodName;
         this.periodStartHour = periodStartHour;
@@ -32,11 +33,11 @@ public class PeriodDTO {
         return periodName;
     }
 
-    public Instant getPeriodStartHour() {
+    public LocalDateTime getPeriodStartHour() {
         return periodStartHour;
     }
 
-    public Instant getPeriodEndHour() {
+    public LocalDateTime getPeriodEndHour() {
         return periodEndHour;
     }
 }
