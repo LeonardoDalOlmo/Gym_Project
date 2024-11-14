@@ -1,6 +1,10 @@
 package com.example.Gym.Project.DTO;
 
 import com.example.Gym.Project.Model.Instructor;
+import com.example.Gym.Project.Model.Modality;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InstructorDTO {
 
@@ -9,13 +13,15 @@ public class InstructorDTO {
     private Integer instructorPhoneNumber;
     private String instructorDescription;
     private Double instructorSalary;
+    private List<ModalityDTO> modalityList = new ArrayList<>();
 
-    public InstructorDTO(int instructorId, String instructorName, Integer instructorPhoneNumber, String instructorDescription, Double instructorSalary) {
+    public InstructorDTO(int instructorId, String instructorName, Integer instructorPhoneNumber, String instructorDescription, Double instructorSalary, List<ModalityDTO> modalityList) {
         this.instructorId = instructorId;
         this.instructorName = instructorName;
         this.instructorPhoneNumber = instructorPhoneNumber;
         this.instructorDescription = instructorDescription;
         this.instructorSalary = instructorSalary;
+        this.modalityList = modalityList;
     }
 
     public InstructorDTO(Instructor entity){
@@ -24,6 +30,7 @@ public class InstructorDTO {
         instructorPhoneNumber = entity.getInstructorPhoneNumber();
         instructorDescription = entity.getInstructorDescription();
         instructorSalary = entity.getInstructorSalary();
+        entity.getModalityList().forEach(cat -> this.modalityList.add(new ModalityDTO(cat)));
         
     }
 
@@ -45,5 +52,9 @@ public class InstructorDTO {
 
     public Double getInstructorSalary() {
         return instructorSalary;
+    }
+
+    public List<ModalityDTO> getModalityList() {
+        return modalityList;
     }
 }

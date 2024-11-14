@@ -24,7 +24,10 @@ public class Modality {
     private String modalityName;
     @Column(nullable = false)
     private String modalityDescription;
-    @Column(nullable = false)
+    @ElementCollection(targetClass = Days.class)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "modalidade_dias", joinColumns = @JoinColumn(name = "modalidade_id"))
+    @Column(name = "dia")
     private List<Days> modalityDay;
 
     @OneToMany(mappedBy = "modalityId")

@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @NoArgsConstructor
@@ -23,9 +25,9 @@ public class Period {
     @Column(nullable = false)
     private String periodName;
     @Column(nullable = false)
-    private Instant periodStartHour;
+    private LocalDateTime periodStartHour = LocalDateTime.now();
     @Column(nullable = false)
-    private Instant periodEndHour;
+    private LocalDateTime periodEndHour = LocalDateTime.now();
 
     @ManyToMany
     @JoinTable(
