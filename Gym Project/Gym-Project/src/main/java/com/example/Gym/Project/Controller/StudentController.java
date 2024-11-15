@@ -1,5 +1,6 @@
 package com.example.Gym.Project.Controller;
 
+import com.example.Gym.Project.DTO.ModalityDTO;
 import com.example.Gym.Project.DTO.StudentDTO;
 import com.example.Gym.Project.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping(value = "/students")
 public class StudentController {
 
     @Autowired
@@ -24,11 +25,17 @@ public class StudentController {
         return ResponseEntity.ok().body(students);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<StudentDTO> findById(@PathVariable Integer id) {
         var student = service.findById(id);
 
         return ResponseEntity.ok().body(student);
+    }
+
+    @GetMapping(value = "modalitys/{id}")
+    public ResponseEntity<List<ModalityDTO>> modality(@PathVariable Integer id) {
+        var modalitys = service.findModalitybyStudent(id);
+        return ResponseEntity.ok().body(modalitys);
     }
 
     @PostMapping
@@ -41,14 +48,14 @@ public class StudentController {
         return ResponseEntity.created(uri).body(student);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<StudentDTO> update(@PathVariable Integer id, @RequestBody StudentDTO dto){
         var student = service.updateStudent(id, dto);
 
         return ResponseEntity.ok().body(student);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         service.deleteStudent(id);
 

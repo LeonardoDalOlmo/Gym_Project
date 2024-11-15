@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +27,9 @@ public class Plan {
     private String planDescription;
     @Column(nullable = false)
     private Double planPrice;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private LocalDateTime planStart = LocalDateTime.now();
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private LocalDateTime planEnd = LocalDateTime.now();
 
     @OneToMany(mappedBy = "planId")

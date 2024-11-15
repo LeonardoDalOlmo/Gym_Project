@@ -11,7 +11,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping(value = "/worksheets")
 public class WorksheetsController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class WorksheetsController {
         return ResponseEntity.ok().body(worksheets);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<WorksheetsDTO> findById(@PathVariable Integer id) {
         var worksheets = service.findById(id);
 
@@ -41,14 +41,14 @@ public class WorksheetsController {
         return ResponseEntity.created(uri).body(worksheet);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<WorksheetsDTO> update(@PathVariable Integer id, @RequestBody WorksheetsDTO dto){
         var instructor = service.updateWorksheet(id, dto);
 
         return ResponseEntity.ok().body(instructor);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         service.deleteWorksheet(id);
 

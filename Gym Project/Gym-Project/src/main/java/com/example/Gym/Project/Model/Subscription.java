@@ -40,9 +40,9 @@ public class Subscription {
     @JoinColumn(name = "modalityId")
     private Modality modalityId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant subscriptionStartDate = Instant.now();
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant subscriptionEndDate;
 }

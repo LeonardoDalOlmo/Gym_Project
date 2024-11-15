@@ -1,6 +1,7 @@
 package com.example.Gym.Project.Controller;
 
 import com.example.Gym.Project.DTO.InstructorDTO;
+import com.example.Gym.Project.DTO.ModalityDTO;
 import com.example.Gym.Project.Service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "/instructors")
+@RequestMapping(value = "/instructors")
 public class InstructorController {
 
     @Autowired
@@ -24,11 +25,17 @@ public class InstructorController {
         return ResponseEntity.ok().body(instructors);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<InstructorDTO> findById(@PathVariable Integer id) {
         var instructor = service.findById(id);
 
         return ResponseEntity.ok().body(instructor);
+    }
+
+    @GetMapping(value = "modalitys/{id}")
+    public ResponseEntity<List<ModalityDTO>> modality(@PathVariable Integer id) {
+        var modalitys = service.findModalityByInstructor(id);
+        return ResponseEntity.ok().body(modalitys);
     }
 
     @PostMapping
@@ -41,14 +48,14 @@ public class InstructorController {
         return ResponseEntity.created(uri).body(instructor);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<InstructorDTO> update(@PathVariable Integer id, @RequestBody InstructorDTO dto){
         var instructor = service.updateInstructor(id, dto);
 
         return ResponseEntity.ok().body(instructor);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         service.deleteInstructor(id);
 

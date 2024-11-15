@@ -11,7 +11,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "/plans")
+@RequestMapping(value = "/plans")
 public class PlanController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class PlanController {
         return ResponseEntity.ok().body(plans);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<PlanDTO> findById(@PathVariable Integer id) {
         var plans = service.findById(id);
 
@@ -41,14 +41,14 @@ public class PlanController {
         return ResponseEntity.created(uri).body(plan);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<PlanDTO> update(@PathVariable Integer id, @RequestBody PlanDTO dto){
         var plan = service.updatePlan(id, dto);
 
         return ResponseEntity.ok().body(plan);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         service.deletePlan(id);
 
