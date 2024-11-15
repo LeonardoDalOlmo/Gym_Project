@@ -24,7 +24,7 @@ public class SubscriptionController {
         return ResponseEntity.ok().body(subscriptions);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<SubscriptionDTO> findById(@PathVariable Integer id) {
         var subscription = service.findById(id);
 
@@ -41,14 +41,14 @@ public class SubscriptionController {
         return ResponseEntity.created(uri).body(subscription);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<SubscriptionDTO> update(@PathVariable Integer id, @RequestBody SubscriptionDTO dto){
         var subscription = service.updateSubscription(id, dto);
 
         return ResponseEntity.ok().body(subscription);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         service.deleteSubscription(id);
 

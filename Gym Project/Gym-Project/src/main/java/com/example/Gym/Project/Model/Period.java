@@ -24,9 +24,9 @@ public class Period {
     private Integer periodId;
     @Column(nullable = false)
     private String periodName;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private LocalDateTime periodStartHour = LocalDateTime.now();
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private LocalDateTime periodEndHour = LocalDateTime.now();
 
     @ManyToMany

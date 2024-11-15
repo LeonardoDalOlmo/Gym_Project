@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "/modalitys")
+@RequestMapping(value = "/modalitys")
 public class ModalityController {
 
     @Autowired
@@ -26,20 +26,20 @@ public class ModalityController {
         return ResponseEntity.ok().body(modalitys);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<ModalityDTO> findbyId(@PathVariable Integer id) {
         var modality = service.findById(id);
 
         return ResponseEntity.ok().body(modality);
     }
 
-    @GetMapping("/periods/{id}")
+    @GetMapping(value = "/periods/{id}")
     public ResponseEntity<List<PeriodDTO>> findPeriod(@PathVariable Integer id) {
         var periods = service.findPeriodByModality(id);
         return ResponseEntity.ok().body(periods);
     }
 
-    @GetMapping("/instructors/{id}")
+    @GetMapping(value = "/instructors/{id}")
     public ResponseEntity<List<InstructorDTO>> findInstructor(@PathVariable Integer id) {
         var instructors = service.findInstructorByModality(id);
         return ResponseEntity.ok().body(instructors);
@@ -55,13 +55,13 @@ public class ModalityController {
         return ResponseEntity.created(uri).body(modality);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<ModalityDTO> update(@PathVariable Integer id,@RequestBody ModalityDTO dto) {
         var modality = service.updateModality(id, dto);
 
         return ResponseEntity.ok().body(modality);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<ModalityDTO> delete(@PathVariable Integer id) {
         service.deleteModality(id);
         return ResponseEntity.noContent().build();
