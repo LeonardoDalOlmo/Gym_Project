@@ -1,7 +1,6 @@
 package com.example.Gym.Project.DTO;
 
 import com.example.Gym.Project.Model.Instructor;
-import com.example.Gym.Project.Model.Modality;
 
 import java.util.ArrayList;
 import java.util.List;

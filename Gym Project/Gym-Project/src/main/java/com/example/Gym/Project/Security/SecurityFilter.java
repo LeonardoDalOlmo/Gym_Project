@@ -2,7 +2,6 @@ package com.example.Gym.Project.Security;
 
 
 import com.example.Gym.Project.Repository.UserRepository;
-import com.example.Gym.Project.Service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
