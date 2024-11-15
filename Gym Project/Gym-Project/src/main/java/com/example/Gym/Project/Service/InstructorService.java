@@ -9,8 +9,7 @@ import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
@@ -20,26 +19,22 @@ public class InstructorService {
     @Autowired
     private InstructorRepository instructorRepository;
 
-    @Transactional(readOnly = true)
     public InstructorDTO findById(Integer id) {
         Instructor instructor = instructorRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Resource not found "));
         return new InstructorDTO(instructor);
     }
 
-    @Transactional(readOnly = true)
     public List<ModalityDTO> findModality(Integer id){
         var instructors = instructorRepository.searchModalitybyInstructor(id);
         return instructors.stream().map(x -> new ModalityDTO(x)).toList();
     }
 
-    @Transactional(readOnly = true)
     public List<InstructorDTO> findAll() {
         List<Instructor> instructors = instructorRepository.findAll();
         return instructors.stream().map(x -> new InstructorDTO(x)).toList();
     }
 
-    @Transactional
     public InstructorDTO insertInstructor(InstructorDTO dto) {
         Instructor instructor = new Instructor();
         copyDtoToEntity(dto, instructor);
@@ -47,10 +42,9 @@ public class InstructorService {
         return new InstructorDTO(instructor);
     }
 
-    @Transactional
-    public InstructorDTO updateInstructor(Integer id ,InstructorDTO dto){
+    public InstructorDTO updateInstructor(Integer id, InstructorDTO dto){
         try{
-            Instructor instructor = instructorRepository.getReferenceById(id);
+            Instructor instructor = instructorRepository.getReferenceById(dto.getInstructorId());
             copyDtoToEntity(dto,instructor);
             instructor = instructorRepository.save(instructor);
             return new InstructorDTO(instructor);
@@ -60,7 +54,6 @@ public class InstructorService {
         }
     }
 
-    @Transactional(propagation = Propagation.SUPPORTS)
     public void deleteInstructor(Integer id){
         if(!instructorRepository.existsById(id)){
             throw new ResourceNotFoundException("Resource not found");

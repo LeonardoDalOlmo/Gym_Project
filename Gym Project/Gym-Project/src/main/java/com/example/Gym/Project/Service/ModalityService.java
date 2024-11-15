@@ -9,6 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ModalityService {
 
@@ -21,8 +23,9 @@ public class ModalityService {
         return new ModalityDTO(modality);
     }
 
-    public ModalityDTO findAll(ModalityDTO modalityDTO) {
-        return (ModalityDTO) modalityRepository.findAll();
+    public List<ModalityDTO> findAll() {
+        List<Modality> modalities = modalityRepository.findAll();
+        return modalities.stream().map(x -> new ModalityDTO(x)).toList();
     }
 
     public ModalityDTO insertModality(ModalityDTO dto) {
@@ -32,7 +35,7 @@ public class ModalityService {
         return new ModalityDTO(modality);
     }
 
-    public ModalityDTO updateModality(ModalityDTO dto) {
+    public ModalityDTO updateModality(Integer id, ModalityDTO dto) {
         try{
             Modality modality = modalityRepository.getReferenceById(dto.getModalityId());
             copyDtoToEntity(dto, modality);
