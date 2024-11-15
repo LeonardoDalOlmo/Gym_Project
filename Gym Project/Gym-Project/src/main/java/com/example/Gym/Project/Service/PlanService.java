@@ -28,7 +28,7 @@ public class PlanService {
 
 
     public List<PlanDTO> findAll(){
-        var planos = planRepository.findAll();
+        List<Plan> planos = planRepository.findAll();
         return planos.stream().map(PlanDTO::new).toList();
     }
 
@@ -42,7 +42,7 @@ public class PlanService {
     }
 
 
-    public PlanDTO updatePlan(PlanDTO dto) {
+    public PlanDTO updatePlan(Integer id, PlanDTO dto) {
         try{
             Plan plan = planRepository.getReferenceById(dto.getPlanId());
             copyDtoToEntity(dto, plan);

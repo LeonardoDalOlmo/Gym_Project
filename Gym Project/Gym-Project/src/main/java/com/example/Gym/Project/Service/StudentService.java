@@ -6,6 +6,7 @@ import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.Gym.Project.Model.Student;
+import java.util.List;
 
 
 @Service
@@ -14,8 +15,10 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public StudentDTO findAll(Integer id) {
-        return (StudentDTO) studentRepository.findAll();
+    public List<StudentDTO> findAll(Integer id) {
+        List<Student> students = studentRepository.findAll();
+        return students.stream().map(x -> new StudentDTO(x)).toList();
+
     }
 
     public StudentDTO findById(Integer id) {

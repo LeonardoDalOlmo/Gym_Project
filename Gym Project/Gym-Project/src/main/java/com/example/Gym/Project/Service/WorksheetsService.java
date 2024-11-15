@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WorksheetsService {
 
@@ -23,8 +25,9 @@ public class WorksheetsService {
         return new WorksheetsDTO(worksheets);
     }
 
-    public WorksheetsDTO findAll(WorksheetsDTO worksheetsDTO) {
-        return (WorksheetsDTO) worksheetsRepository.findAll();
+    public List<WorksheetsDTO> findAll(WorksheetsDTO worksheetsDTO) {
+        List<Worksheets> worksheets = worksheetsRepository.findAll();
+        return worksheets.stream().map(x -> new WorksheetsDTO(x)).toList();
     }
 
     public WorksheetsDTO insertWorksheet(WorksheetsDTO dto) {
@@ -34,7 +37,7 @@ public class WorksheetsService {
         return new WorksheetsDTO(worksheets);
     }
 
-    public WorksheetsDTO updateWorksheet(WorksheetsDTO dto) {
+    public WorksheetsDTO updateWorksheet(Integer id, WorksheetsDTO dto) {
         try{
             Worksheets worksheets = new Worksheets();
             copyDtoToEntity(dto, worksheets);
