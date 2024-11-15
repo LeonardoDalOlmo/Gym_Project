@@ -1,7 +1,11 @@
 package com.example.Gym.Project.Service;
 
+import com.example.Gym.Project.DTO.InstructorDTO;
 import com.example.Gym.Project.DTO.ModalityDTO;
+import com.example.Gym.Project.DTO.PeriodDTO;
+import com.example.Gym.Project.Model.Instructor;
 import com.example.Gym.Project.Model.Modality;
+import com.example.Gym.Project.Model.Period;
 import com.example.Gym.Project.Repository.ModalityRepository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
 import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
@@ -57,6 +61,17 @@ public class ModalityService {
         catch (EntityNotFoundException e){
             throw new DataBaseException("Failed to delete resource");
         }
+    }
+
+    public List<PeriodDTO> findPeriodByModality(Integer id) {
+        List<Period> periods = modalityRepository.searchPeriodbyModality(id);
+
+        return periods.stream().map(x -> new PeriodDTO(x)).toList();
+    }
+
+    public List<InstructorDTO> findInstructorByModality(Integer id) {
+        List<Instructor> instructors = modalityRepository.searchInstructorbyModality(id);
+        return instructors.stream().map(x -> new InstructorDTO(x)).toList();
     }
 
     public void copyDtoToEntity(ModalityDTO dto, Modality entity) {

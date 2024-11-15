@@ -3,6 +3,7 @@ package com.example.Gym.Project.Service;
 import com.example.Gym.Project.DTO.InstructorDTO;
 import com.example.Gym.Project.DTO.ModalityDTO;
 import com.example.Gym.Project.Model.Instructor;
+import com.example.Gym.Project.Model.Modality;
 import com.example.Gym.Project.Repository.InstructorRepository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
 import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
@@ -64,6 +65,12 @@ public class InstructorService {
         catch (EntityNotFoundException e){
             throw new DataBaseException("Failed to delete resource");
         }
+    }
+
+    public List<ModalityDTO> findModalityByInstructor(Integer id){
+        List<Modality> modalities = instructorRepository.searchModalitybyInstructor(id);
+
+        return modalities.stream().map(x -> new ModalityDTO(x)).toList();
     }
 
     public void copyDtoToEntity(InstructorDTO dto, Instructor entity) {

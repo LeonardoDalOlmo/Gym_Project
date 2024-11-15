@@ -1,6 +1,8 @@
 package com.example.Gym.Project.Service;
 
+import com.example.Gym.Project.DTO.ModalityDTO;
 import com.example.Gym.Project.DTO.StudentDTO;
+import com.example.Gym.Project.Model.Modality;
 import com.example.Gym.Project.Repository.StudentRepository;
 import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +59,11 @@ public class StudentService {
         catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException("Falha ao excluir o recurso");
         }
+    }
+
+    public List<ModalityDTO> findModalitybyStudent(Integer id){
+        List<Modality> modalities = studentRepository.searchModalitybyStudent(id);
+        return modalities.stream().map(x -> new ModalityDTO(x)).toList();
     }
 
     public void copyDtoToEntity(StudentDTO dto, Student entity) {

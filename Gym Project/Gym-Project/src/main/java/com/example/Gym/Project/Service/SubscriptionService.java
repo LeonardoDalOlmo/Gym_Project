@@ -23,7 +23,7 @@ public class SubscriptionService {
         return new SubscriptionDTO(subscription);
     }
 
-    public List<SubscriptionDTO> findAll(SubscriptionDTO subscriptionDTO) {
+    public List<SubscriptionDTO> findAll() {
         List<Subscription> subscriptions = subscriptionRepository.findAll();
         return subscriptions.stream().map(x -> new SubscriptionDTO(x)).toList();
     }
