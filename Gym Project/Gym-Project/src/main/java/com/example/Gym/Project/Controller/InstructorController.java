@@ -3,6 +3,7 @@ package com.example.Gym.Project.Controller;
 import com.example.Gym.Project.DTO.InstructorDTO;
 import com.example.Gym.Project.DTO.ModalityDTO;
 import com.example.Gym.Project.Service.InstructorService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ public class InstructorController {
     private InstructorService service;
 
     @GetMapping
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<InstructorDTO>> findAll(){
         var instructors = service.findAll();
 
@@ -26,6 +28,7 @@ public class InstructorController {
     }
 
     @GetMapping(value = "/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<InstructorDTO> findById(@PathVariable Integer id) {
         var instructor = service.findById(id);
 
@@ -33,12 +36,14 @@ public class InstructorController {
     }
 
     @GetMapping(value = "modalitys/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<ModalityDTO>> modality(@PathVariable Integer id) {
         var modalitys = service.findModalityByInstructor(id);
         return ResponseEntity.ok().body(modalitys);
     }
 
     @PostMapping
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<InstructorDTO> insert(@RequestBody InstructorDTO dto){
         var instructor = service.insertInstructor(dto);
 
@@ -49,6 +54,7 @@ public class InstructorController {
     }
 
     @PutMapping(value = "/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<InstructorDTO> update(@PathVariable Integer id, @RequestBody InstructorDTO dto){
         var instructor = service.updateInstructor(id, dto);
 
@@ -56,6 +62,7 @@ public class InstructorController {
     }
 
     @DeleteMapping(value = "/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         service.deleteInstructor(id);
 
