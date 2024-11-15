@@ -4,6 +4,7 @@ import com.example.Gym.Project.DTO.InstructorDTO;
 import com.example.Gym.Project.DTO.ModalityDTO;
 import com.example.Gym.Project.DTO.PeriodDTO;
 import com.example.Gym.Project.Service.ModalityService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class ModalityController {
     private ModalityService service;
 
     @GetMapping
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<ModalityDTO>> fidnAll() {
         var modalitys = service.findAll();
 
@@ -27,6 +29,7 @@ public class ModalityController {
     }
 
     @GetMapping(value = "/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<ModalityDTO> findbyId(@PathVariable Integer id) {
         var modality = service.findById(id);
 
@@ -34,18 +37,21 @@ public class ModalityController {
     }
 
     @GetMapping(value = "/periods/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<PeriodDTO>> findPeriod(@PathVariable Integer id) {
         var periods = service.findPeriodByModality(id);
         return ResponseEntity.ok().body(periods);
     }
 
     @GetMapping(value = "/instructors/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<InstructorDTO>> findInstructor(@PathVariable Integer id) {
         var instructors = service.findInstructorByModality(id);
         return ResponseEntity.ok().body(instructors);
     }
 
     @PostMapping
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<ModalityDTO> insert(@RequestBody ModalityDTO dto) {
         var modality = service.insertModality(dto);
 
@@ -56,12 +62,14 @@ public class ModalityController {
     }
 
     @PutMapping(value = "/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<ModalityDTO> update(@PathVariable Integer id,@RequestBody ModalityDTO dto) {
         var modality = service.updateModality(id, dto);
 
         return ResponseEntity.ok().body(modality);
     }
     @DeleteMapping(value = "/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<ModalityDTO> delete(@PathVariable Integer id) {
         service.deleteModality(id);
         return ResponseEntity.noContent().build();

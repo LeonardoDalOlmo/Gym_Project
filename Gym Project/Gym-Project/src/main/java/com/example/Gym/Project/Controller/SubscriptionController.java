@@ -2,6 +2,7 @@ package com.example.Gym.Project.Controller;
 
 import com.example.Gym.Project.DTO.SubscriptionDTO;
 import com.example.Gym.Project.Service.SubscriptionService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ public class SubscriptionController {
     private SubscriptionService service;
 
     @GetMapping
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<SubscriptionDTO>> findAll(){
         var subscriptions = service.findAll();
 
@@ -25,6 +27,7 @@ public class SubscriptionController {
     }
 
     @GetMapping(value = "/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<SubscriptionDTO> findById(@PathVariable Integer id) {
         var subscription = service.findById(id);
 
@@ -32,6 +35,7 @@ public class SubscriptionController {
     }
 
     @PostMapping
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<SubscriptionDTO> insert(@RequestBody SubscriptionDTO dto){
         var subscription = service.insertSubscription(dto);
 
@@ -42,6 +46,7 @@ public class SubscriptionController {
     }
 
     @PutMapping(value = "/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<SubscriptionDTO> update(@PathVariable Integer id, @RequestBody SubscriptionDTO dto){
         var subscription = service.updateSubscription(id, dto);
 
@@ -49,6 +54,7 @@ public class SubscriptionController {
     }
 
     @DeleteMapping(value = "/{id}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         service.deleteSubscription(id);
 
