@@ -1,7 +1,6 @@
 package com.example.Gym.Project.Controller;
 
 import com.example.Gym.Project.DTO.InstructorDTO;
-import com.example.Gym.Project.DTO.ModalityDTO;
 import com.example.Gym.Project.Service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +29,6 @@ public class InstructorController {
         var instructor = service.findById(id);
 
         return ResponseEntity.ok().body(instructor);
-    }
-
-    @GetMapping("/modalities/{id}")
-    public ResponseEntity<List<ModalityDTO>> findModality(@PathVariable Integer id){
-        var modalities = service.findModality(id);
-
-        return ResponseEntity.ok().body(modalities);
     }
 
     @PostMapping
