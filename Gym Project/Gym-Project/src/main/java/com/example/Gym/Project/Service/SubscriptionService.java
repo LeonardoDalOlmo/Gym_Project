@@ -9,6 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SubscriptionService {
 
@@ -21,8 +23,9 @@ public class SubscriptionService {
         return new SubscriptionDTO(subscription);
     }
 
-    public SubscriptionDTO findAll(SubscriptionDTO subscriptionDTO) {
-        return (SubscriptionDTO) subscriptionRepository.findAll();
+    public List<SubscriptionDTO> findAll(SubscriptionDTO subscriptionDTO) {
+        List<Subscription> subscriptions = subscriptionRepository.findAll();
+        return subscriptions.stream().map(x -> new SubscriptionDTO(x)).toList();
     }
 
     public SubscriptionDTO insertSubscription(SubscriptionDTO dto) {
@@ -32,7 +35,7 @@ public class SubscriptionService {
         return new SubscriptionDTO(subscription);
     }
 
-    public SubscriptionDTO updateSubscription(SubscriptionDTO dto) {
+    public SubscriptionDTO updateSubscription(Integer id, SubscriptionDTO dto) {
         try{
             Subscription subscription = subscriptionRepository.getReferenceById(dto.getSubscriptionId());
             copyDtoToEntity(dto, subscription);

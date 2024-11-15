@@ -10,7 +10,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.parser.Entity;
+
 import java.util.List;
 
 @Service
@@ -30,7 +30,7 @@ public class InstructorService {
         return instructors.stream().map(x -> new ModalityDTO(x)).toList();
     }
 
-    public List<InstructorDTO> findAll(InstructorDTO instructorDTO) {
+    public List<InstructorDTO> findAll() {
         List<Instructor> instructors = instructorRepository.findAll();
         return instructors.stream().map(x -> new InstructorDTO(x)).toList();
     }
@@ -42,7 +42,7 @@ public class InstructorService {
         return new InstructorDTO(instructor);
     }
 
-    public InstructorDTO updateInstructor(InstructorDTO dto){
+    public InstructorDTO updateInstructor(Integer id, InstructorDTO dto){
         try{
             Instructor instructor = instructorRepository.getReferenceById(dto.getInstructorId());
             copyDtoToEntity(dto,instructor);

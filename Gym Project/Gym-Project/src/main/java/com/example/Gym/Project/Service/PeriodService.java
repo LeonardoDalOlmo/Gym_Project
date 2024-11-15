@@ -9,6 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PeriodService {
 
@@ -21,8 +23,9 @@ public class PeriodService {
         return new PeriodDTO(period);
     }
 
-    public PeriodDTO findAll(PeriodDTO periodDTO) {
-        return (PeriodDTO) periodRepository.findAll();
+    public List<PeriodDTO> findAll() {
+        List<Period> periods = periodRepository.findAll();
+        return periods.stream().map(x -> new PeriodDTO(x)).toList();
     }
 
     public PeriodDTO insertPeriod(PeriodDTO dto) {
@@ -32,7 +35,7 @@ public class PeriodService {
         return new PeriodDTO(period);
     }
 
-    public PeriodDTO updatePeriod(PeriodDTO dto) {
+    public PeriodDTO updatePeriod(Integer id, PeriodDTO dto) {
         try{
             Period period = periodRepository.getReferenceById(dto.getPeriodId());
             copyDtoToEntity(dto, period);
