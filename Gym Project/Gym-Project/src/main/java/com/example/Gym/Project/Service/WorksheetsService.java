@@ -1,7 +1,6 @@
 package com.example.Gym.Project.Service;
 
 import com.example.Gym.Project.DTO.WorksheetsDTO;
-import com.example.Gym.Project.Model.Student;
 import com.example.Gym.Project.Model.Worksheets;
 import com.example.Gym.Project.Repository.WorksheetsRepository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
@@ -25,7 +24,7 @@ public class WorksheetsService {
         return new WorksheetsDTO(worksheets);
     }
 
-    public List<WorksheetsDTO> findAll(WorksheetsDTO worksheetsDTO) {
+    public List<WorksheetsDTO> findAll() {
         List<Worksheets> worksheets = worksheetsRepository.findAll();
         return worksheets.stream().map(x -> new WorksheetsDTO(x)).toList();
     }
