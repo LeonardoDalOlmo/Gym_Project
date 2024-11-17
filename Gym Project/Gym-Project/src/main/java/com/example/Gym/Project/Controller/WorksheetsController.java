@@ -12,7 +12,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/worksheets")
+@RequestMapping("/worksheets")
 public class WorksheetsController {
 
     @Autowired

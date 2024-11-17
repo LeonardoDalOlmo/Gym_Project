@@ -12,7 +12,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "/subscriptions")
+@RequestMapping("/subscriptions")
 public class SubscriptionController {
 
     @Autowired

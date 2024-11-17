@@ -32,7 +32,7 @@ public class TokenService {
             return JWT.require(algorithm).withIssuer("GymProject").build().verify(token).getSubject();
         }
         catch(JWTVerificationException e){
-            throw new RuntimeException(e);
+            return null;
         }
     }
 

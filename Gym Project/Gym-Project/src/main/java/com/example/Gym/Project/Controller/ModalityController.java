@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/modalitys")
+@RequestMapping("/modalitys")
 public class ModalityController {
 
     @Autowired

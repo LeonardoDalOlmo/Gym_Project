@@ -13,7 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/usuario")
+@RequestMapping("/usuario")
 public class UserController {
 
     @Autowired
