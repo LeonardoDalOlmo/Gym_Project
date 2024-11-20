@@ -21,7 +21,7 @@ public class PeriodController {
     @GetMapping
     @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<PeriodDTO>> findAll(){
-        var periods = service.findAll();
+        List<PeriodDTO> periods = service.findAll();
 
         return ResponseEntity.ok().body(periods);
     }

@@ -10,6 +10,7 @@ import com.example.Gym.Project.Repository.ModalityRepository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
 import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,17 +22,20 @@ public class ModalityService {
     @Autowired
     private ModalityRepository modalityRepository;
 
+    @Transactional
     public ModalityDTO findById(Integer id) {
         Modality modality = modalityRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Resource not found "));
         return new ModalityDTO(modality);
     }
 
+    @Transactional
     public List<ModalityDTO> findAll() {
         List<Modality> modalities = modalityRepository.findAll();
         return modalities.stream().map(x -> new ModalityDTO(x)).toList();
     }
 
+    @Transactional
     public ModalityDTO insertModality(ModalityDTO dto) {
         Modality modality = new Modality();
         copyDtoToEntity(dto, modality);
@@ -39,6 +43,7 @@ public class ModalityService {
         return new ModalityDTO(modality);
     }
 
+    @Transactional
     public ModalityDTO updateModality(Integer id, ModalityDTO dto) {
         try{
             Modality modality = modalityRepository.getReferenceById(dto.getModalityId());
@@ -51,6 +56,7 @@ public class ModalityService {
         }
     }
 
+    @Transactional
     public void deleteModality(Integer id) {
         if(!modalityRepository.existsById(id)){
             throw new ResourceNotFoundException("Resource not found");
@@ -63,6 +69,7 @@ public class ModalityService {
         }
     }
 
+    @Transactional
     public List<PeriodDTO> findPeriodByModality(Integer id) {
         List<Period> periods = modalityRepository.searchPeriodbyModality(id);
 

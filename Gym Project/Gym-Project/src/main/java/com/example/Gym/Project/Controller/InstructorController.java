@@ -22,9 +22,9 @@ public class InstructorController {
     @GetMapping
     @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<InstructorDTO>> findAll(){
-        var instructors = service.findAll();
+        List<InstructorDTO> list = service.findAll();
 
-        return ResponseEntity.ok().body(instructors);
+        return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")

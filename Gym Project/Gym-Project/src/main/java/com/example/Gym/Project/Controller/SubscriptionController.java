@@ -21,7 +21,7 @@ public class SubscriptionController {
     @GetMapping
     @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<SubscriptionDTO>> findAll(){
-        var subscriptions = service.findAll();
+        List<SubscriptionDTO> subscriptions = service.findAll();
 
         return ResponseEntity.ok().body(subscriptions);
     }

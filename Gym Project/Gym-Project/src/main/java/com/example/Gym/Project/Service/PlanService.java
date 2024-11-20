@@ -6,6 +6,7 @@ import com.example.Gym.Project.Repository.PlanRespository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
 import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class PlanService {
     private PlanRespository planRepository;
 
 
+    @Transactional
     public PlanDTO findById(Integer id){
         Plan plan = planRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Resource not found"));
@@ -25,12 +27,14 @@ public class PlanService {
     }
 
 
+    @Transactional
     public List<PlanDTO> findAll(){
         List<Plan> planos = planRepository.findAll();
         return planos.stream().map(PlanDTO::new).toList();
     }
 
 
+    @Transactional
     public PlanDTO insertPlan(PlanDTO dto) {
 
         Plan plan = new Plan();
@@ -40,6 +44,7 @@ public class PlanService {
     }
 
 
+    @Transactional
     public PlanDTO updatePlan(Integer id, PlanDTO dto) {
         try{
             Plan plan = planRepository.getReferenceById(dto.getPlanId());
@@ -53,6 +58,7 @@ public class PlanService {
     }
 
 
+    @Transactional
     public void deletePlan(Integer id) {
         if(!planRepository.existsById(id)){
             throw new ResourceNotFoundException("Resource not found");

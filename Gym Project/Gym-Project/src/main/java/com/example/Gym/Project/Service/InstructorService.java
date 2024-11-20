@@ -8,6 +8,7 @@ import com.example.Gym.Project.Repository.InstructorRepository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
 import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,22 +21,26 @@ public class InstructorService {
     @Autowired
     private InstructorRepository instructorRepository;
 
+    @Transactional
     public InstructorDTO findById(Integer id) {
         Instructor instructor = instructorRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Resource not found "));
         return new InstructorDTO(instructor);
     }
 
+    @Transactional
     public List<ModalityDTO> findModality(Integer id){
         var instructors = instructorRepository.searchModalitybyInstructor(id);
         return instructors.stream().map(x -> new ModalityDTO(x)).toList();
     }
 
+    @Transactional
     public List<InstructorDTO> findAll() {
         List<Instructor> instructors = instructorRepository.findAll();
         return instructors.stream().map(x -> new InstructorDTO(x)).toList();
     }
 
+    @Transactional
     public InstructorDTO insertInstructor(InstructorDTO dto) {
         Instructor instructor = new Instructor();
         copyDtoToEntity(dto, instructor);
@@ -43,6 +48,7 @@ public class InstructorService {
         return new InstructorDTO(instructor);
     }
 
+    @Transactional
     public InstructorDTO updateInstructor(Integer id, InstructorDTO dto){
         try{
             Instructor instructor = instructorRepository.getReferenceById(dto.getInstructorId());
@@ -55,6 +61,7 @@ public class InstructorService {
         }
     }
 
+    @Transactional
     public void deleteInstructor(Integer id){
         if(!instructorRepository.existsById(id)){
             throw new ResourceNotFoundException("Resource not found");
@@ -67,6 +74,7 @@ public class InstructorService {
         }
     }
 
+    @Transactional
     public List<ModalityDTO> findModalityByInstructor(Integer id){
         List<Modality> modalities = instructorRepository.searchModalitybyInstructor(id);
 

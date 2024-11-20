@@ -6,6 +6,7 @@ import com.example.Gym.Project.Repository.PeriodRepository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
 import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +18,20 @@ public class PeriodService {
     @Autowired
     private PeriodRepository periodRepository;
 
+    @Transactional
     public PeriodDTO findById(Integer id) {
         Period period = periodRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Resource not found "));
         return new PeriodDTO(period);
     }
 
+    @Transactional
     public List<PeriodDTO> findAll() {
         List<Period> periods = periodRepository.findAll();
         return periods.stream().map(x -> new PeriodDTO(x)).toList();
     }
 
+    @Transactional
     public PeriodDTO insertPeriod(PeriodDTO dto) {
         Period period = new Period();
         copyDtoToEntity(dto, period);
@@ -35,6 +39,7 @@ public class PeriodService {
         return new PeriodDTO(period);
     }
 
+    @Transactional
     public PeriodDTO updatePeriod(Integer id, PeriodDTO dto) {
         try{
             Period period = periodRepository.getReferenceById(dto.getPeriodId());
@@ -47,6 +52,7 @@ public class PeriodService {
         }
     }
 
+    @Transactional
     public void deletePeriod(Integer id) {
         if(!periodRepository.existsById(id)){
             throw new ResourceNotFoundException("Resource not found");

@@ -6,6 +6,7 @@ import com.example.Gym.Project.Repository.SubscriptionRepository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
 import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +18,20 @@ public class SubscriptionService {
     @Autowired
     private SubscriptionRepository subscriptionRepository;
 
+    @Transactional
     public SubscriptionDTO findById(Integer id) {
         Subscription subscription = subscriptionRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Resource not found "));
         return new SubscriptionDTO(subscription);
     }
 
+    @Transactional
     public List<SubscriptionDTO> findAll() {
         List<Subscription> subscriptions = subscriptionRepository.findAll();
         return subscriptions.stream().map(x -> new SubscriptionDTO(x)).toList();
     }
 
+    @Transactional
     public SubscriptionDTO insertSubscription(SubscriptionDTO dto) {
         Subscription subscription = new Subscription();
         copyDtoToEntity(dto, subscription);
@@ -35,6 +39,7 @@ public class SubscriptionService {
         return new SubscriptionDTO(subscription);
     }
 
+    @Transactional
     public SubscriptionDTO updateSubscription(Integer id, SubscriptionDTO dto) {
         try{
             Subscription subscription = subscriptionRepository.getReferenceById(dto.getSubscriptionId());
@@ -47,6 +52,7 @@ public class SubscriptionService {
         }
     }
 
+    @Transactional
     public void deleteSubscription(Integer id) {
         if(!subscriptionRepository.existsById(id)){
             throw new ResourceNotFoundException("Resource not found");

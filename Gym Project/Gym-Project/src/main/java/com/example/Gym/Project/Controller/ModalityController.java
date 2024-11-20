@@ -23,7 +23,7 @@ public class ModalityController {
     @GetMapping
     @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<ModalityDTO>> fidnAll() {
-        var modalitys = service.findAll();
+        List<ModalityDTO> modalitys = service.findAll();
 
         return ResponseEntity.ok().body(modalitys);
     }

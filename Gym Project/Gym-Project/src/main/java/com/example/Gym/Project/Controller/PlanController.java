@@ -20,7 +20,7 @@ public class PlanController {
 
     @GetMapping
     public ResponseEntity<List<PlanDTO>> findAll(){
-        var plans = service.findAll();
+        List<PlanDTO> plans = service.findAll();
 
         return ResponseEntity.ok().body(plans);
     }

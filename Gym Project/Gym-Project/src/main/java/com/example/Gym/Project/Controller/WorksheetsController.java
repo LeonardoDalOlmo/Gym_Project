@@ -21,7 +21,7 @@ public class WorksheetsController {
     @GetMapping
     @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<WorksheetsDTO>> findAll(){
-        var worksheets = service.findAll();
+        List<WorksheetsDTO> worksheets = service.findAll();
 
         return ResponseEntity.ok().body(worksheets);
     }
