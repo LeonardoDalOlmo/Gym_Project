@@ -29,7 +29,7 @@ public class Student {
     @Column(nullable = false)
     private StudentStatus studentStatus;
 
-    @OneToMany(mappedBy = "studentId")
+    @OneToMany(mappedBy = "student")
     private List<Worksheets> worksheetsList = new ArrayList<>();
 
     @OneToMany(mappedBy = "studentId")

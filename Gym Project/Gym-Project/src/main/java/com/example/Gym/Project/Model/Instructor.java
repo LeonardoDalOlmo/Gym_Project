@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -35,5 +36,5 @@ public class Instructor {
             joinColumns = @JoinColumn(name = "instructorId"),
             inverseJoinColumns = @JoinColumn(name = "modalityId")
     )
-    private List<Modality> modalityList;
+    private List<Modality> modalityList = new ArrayList<Modality>();
 }

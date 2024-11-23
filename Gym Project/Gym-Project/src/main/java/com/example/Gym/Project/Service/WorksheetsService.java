@@ -1,6 +1,7 @@
 package com.example.Gym.Project.Service;
 
 import com.example.Gym.Project.DTO.WorksheetsDTO;
+import com.example.Gym.Project.Model.Student;
 import com.example.Gym.Project.Model.Worksheets;
 import com.example.Gym.Project.Repository.WorksheetsRepository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
@@ -36,6 +37,12 @@ public class WorksheetsService {
     public WorksheetsDTO insertWorksheet(WorksheetsDTO dto) {
         Worksheets worksheets = new Worksheets();
         copyDtoToEntity(dto, worksheets);
+        Student student = new Student();
+        student.setStudentId(dto.getStudentId());
+        if(student.getStudentId() == null){
+            student.setStudentId(worksheets.getStudent().getStudentId());
+        }
+        worksheets.setStudent(student);
         worksheetsRepository.save(worksheets);
         return new WorksheetsDTO(worksheets);
     }
@@ -67,7 +74,6 @@ public class WorksheetsService {
     }
 
     public void copyDtoToEntity(WorksheetsDTO dto, Worksheets entity) {
-        entity.setStudentId(dto.getStudentId());
         entity.setWorksheetDay(dto.getWorksheetDay());
         entity.setMachineDescription(dto.getMachineDescription());
         entity.setSetNumber(dto.getSetNumber());

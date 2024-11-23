@@ -14,13 +14,12 @@ public class InstructorDTO {
     private Double instructorSalary;
     private List<ModalityDTO> modalityList = new ArrayList<>();
 
-    public InstructorDTO(int instructorId, String instructorName, Integer instructorPhoneNumber, String instructorDescription, Double instructorSalary, List<ModalityDTO> modalityList) {
+    public InstructorDTO(int instructorId, String instructorName, Integer instructorPhoneNumber, String instructorDescription, Double instructorSalary) {
         this.instructorId = instructorId;
         this.instructorName = instructorName;
         this.instructorPhoneNumber = instructorPhoneNumber;
         this.instructorDescription = instructorDescription;
         this.instructorSalary = instructorSalary;
-        this.modalityList = modalityList;
     }
 
     public InstructorDTO(Instructor entity){

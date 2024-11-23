@@ -4,9 +4,11 @@ import com.example.Gym.Project.Model.Instructor;
 import com.example.Gym.Project.Model.Modality;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface InstructorRepository extends JpaRepository<Instructor, Integer> {
 
     @Query(value = "SELECT " +

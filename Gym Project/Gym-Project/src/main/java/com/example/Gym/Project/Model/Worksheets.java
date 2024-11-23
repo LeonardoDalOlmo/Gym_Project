@@ -20,7 +20,7 @@ public class Worksheets {
 
     @ManyToOne
     @JoinColumn(name = "studentId")
-    private Student studentId;
+    private Student student;
 
     @Column(nullable = false)
     private String worksheetDay;

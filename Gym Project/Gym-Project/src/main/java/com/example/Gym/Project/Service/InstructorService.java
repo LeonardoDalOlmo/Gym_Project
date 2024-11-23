@@ -44,7 +44,7 @@ public class InstructorService {
     public InstructorDTO insertInstructor(InstructorDTO dto) {
         Instructor instructor = new Instructor();
         copyDtoToEntity(dto, instructor);
-        instructorRepository.save(instructor);
+        instructor = instructorRepository.save(instructor);
         return new InstructorDTO(instructor);
     }
 
@@ -86,5 +86,10 @@ public class InstructorService {
         entity.setInstructorPhoneNumber(dto.getInstructorPhoneNumber());
         entity.setInstructorDescription(dto.getInstructorDescription());
         entity.setInstructorSalary(dto.getInstructorSalary());
+        for(ModalityDTO modDTO : dto.getModalityList()){
+            Modality mod = new Modality();
+            mod.setModalityId(modDTO.getModalityId());
+            entity.getModalityList().add(mod);
+        }
     }
 }

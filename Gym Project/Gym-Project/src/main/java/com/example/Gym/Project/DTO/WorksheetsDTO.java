@@ -6,13 +6,13 @@ import com.example.Gym.Project.Model.Worksheets;
 public class WorksheetsDTO {
 
     private int worksheetId;
-    private Student studentId;
+    private Integer studentId;
     private String worksheetDay;
     private String machineDescription;
     private Integer setNumber;
     private Integer repetitionNumber;
 
-    public WorksheetsDTO(int worksheetId, Student studentId, String worksheetDay, String machineDescription, Integer setNumber, Integer repetitionNumber) {
+    public WorksheetsDTO(int worksheetId, Integer studentId, String worksheetDay, String machineDescription, Integer setNumber, Integer repetitionNumber) {
         this.worksheetId = worksheetId;
         this.studentId = studentId;
         this.worksheetDay = worksheetDay;
@@ -23,7 +23,7 @@ public class WorksheetsDTO {
 
     public WorksheetsDTO(Worksheets entity) {
         worksheetId = entity.getWorksheetId();
-        studentId = entity.getStudentId();
+        studentId = entity.getStudent().getStudentId();
         worksheetDay = entity.getWorksheetDay();
         machineDescription = entity.getMachineDescription();
         setNumber = entity.getSetNumber();
@@ -34,7 +34,7 @@ public class WorksheetsDTO {
         return worksheetId;
     }
 
-    public Student getStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 

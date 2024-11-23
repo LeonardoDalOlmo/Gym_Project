@@ -10,9 +10,9 @@ public class ModalityDTO {
     private Integer modalityId;
     private String modalityName;
     private String modalityDescription;
-    private List<Days> modalityDay;
+    private Days modalityDay;
 
-    public ModalityDTO(Integer modalityId, String modalityName, String modalityDescription, List<Days> modalityDay) {
+    public ModalityDTO(Integer modalityId, String modalityName, String modalityDescription, Days modalityDay) {
         this.modalityId = modalityId;
         this.modalityName = modalityName;
         this.modalityDescription = modalityDescription;
@@ -39,7 +39,7 @@ public class ModalityDTO {
         return modalityDescription;
     }
 
-    public List<Days> getModalityDay() {
+    public Days getModalityDay() {
         return modalityDay;
     }
 }

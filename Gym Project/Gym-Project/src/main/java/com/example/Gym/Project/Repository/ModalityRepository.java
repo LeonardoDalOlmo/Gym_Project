@@ -5,10 +5,11 @@ import com.example.Gym.Project.Model.Modality;
 import com.example.Gym.Project.Model.Period;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+@Repository
 public interface ModalityRepository extends JpaRepository<Modality, Integer> {
     @Query(value = "SELECT" +
             "    MP.PERIODID," +
