@@ -1,6 +1,9 @@
 package com.example.Gym.Project.Service;
 
 import com.example.Gym.Project.DTO.SubscriptionDTO;
+import com.example.Gym.Project.Model.Modality;
+import com.example.Gym.Project.Model.Plan;
+import com.example.Gym.Project.Model.Student;
 import com.example.Gym.Project.Model.Subscription;
 import com.example.Gym.Project.Repository.SubscriptionRepository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
@@ -35,6 +38,32 @@ public class SubscriptionService {
     public SubscriptionDTO insertSubscription(SubscriptionDTO dto) {
         Subscription subscription = new Subscription();
         copyDtoToEntity(dto, subscription);
+
+
+        Student student = new Student();
+        student.setStudentId(dto.getStudentId());
+        if(student.getStudentId() == null){
+            student.setStudentId(subscription.getStudentId().getStudentId());
+        }
+        subscription.setStudentId(student);
+
+
+        Plan plan = new Plan();
+        plan.setPlanId(dto.getPlanId());
+        if(plan.getPlanId() == null){
+            plan.setPlanId(subscription.getPlanId().getPlanId());
+        }
+        subscription.setPlanId(plan);
+
+
+        Modality modality = new Modality();
+        modality.setModalityId(dto.getModalityId());
+        if(modality.getModalityId() == null){
+            modality.setModalityId(subscription.getModalityId().getModalityId());
+        }
+        subscription.setModalityId(modality);
+
+
         subscriptionRepository.save(subscription);
         return new SubscriptionDTO(subscription);
     }
@@ -67,9 +96,6 @@ public class SubscriptionService {
 
     public void copyDtoToEntity(SubscriptionDTO dto, Subscription entity) {
         entity.setSubscriptionId(dto.getSubscriptionId());
-        entity.setStudentId(dto.getStudentId());
-        entity.setPlanId(dto.getPlanId());
-        entity.setModalityId(dto.getModalityId());
         entity.setSubscriptionStartDate(dto.getSubscriptionStartDate());
         entity.setSubscriptionEndDate(dto.getSubscriptionEndDate());
     }

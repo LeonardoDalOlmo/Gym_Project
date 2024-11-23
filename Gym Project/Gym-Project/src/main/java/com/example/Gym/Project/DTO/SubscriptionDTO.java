@@ -11,13 +11,13 @@ import java.time.Instant;
 public class SubscriptionDTO {
 
     private Integer subscriptionId;
-    private Student studentId;
-    private Plan planId;
-    private Modality modalityId;
+    private Integer studentId;
+    private Integer planId;
+    private Integer modalityId;
     private Instant subscriptionStartDate;
     private Instant subscriptionEndDate;
 
-    public void SubscriptionDTO(Integer subscriptionId, Student studentId, Plan planId, Modality modalityId, Instant subscriptionStartDate, Instant subscriptionEndDate) {
+    public void SubscriptionDTO(Integer subscriptionId, Integer studentId, Integer planId, Integer modalityId, Instant subscriptionStartDate, Instant subscriptionEndDate) {
         this.subscriptionId = subscriptionId;
         this.studentId = studentId;
         this.planId = planId;
@@ -28,9 +28,9 @@ public class SubscriptionDTO {
 
     public SubscriptionDTO(Subscription entity) {
         subscriptionId = entity.getSubscriptionId();
-        studentId = entity.getStudentId();
-        planId = entity.getPlanId();
-        modalityId = entity.getModalityId();
+        studentId = entity.getStudentId().getStudentId();
+        planId = entity.getPlanId().getPlanId();
+        modalityId = entity.getModalityId().getModalityId();
         subscriptionStartDate = entity.getSubscriptionStartDate();
         subscriptionEndDate = entity.getSubscriptionEndDate();
     }
@@ -43,15 +43,15 @@ public class SubscriptionDTO {
         return subscriptionStartDate;
     }
 
-    public Modality getModalityId() {
+    public Integer getModalityId() {
         return modalityId;
     }
 
-    public Plan getPlanId() {
+    public Integer getPlanId() {
         return planId;
     }
 
-    public Student getStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
