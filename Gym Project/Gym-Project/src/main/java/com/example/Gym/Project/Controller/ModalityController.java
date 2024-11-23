@@ -2,7 +2,6 @@ package com.example.Gym.Project.Controller;
 
 import com.example.Gym.Project.DTO.InstructorDTO;
 import com.example.Gym.Project.DTO.ModalityDTO;
-import com.example.Gym.Project.DTO.PeriodDTO;
 import com.example.Gym.Project.Service.ModalityService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +33,6 @@ public class ModalityController {
         var modality = service.findById(id);
 
         return ResponseEntity.ok().body(modality);
-    }
-
-    @GetMapping(value = "/periods/{id}")
-    @SecurityRequirement(name = "bearer-key")
-    public ResponseEntity<List<PeriodDTO>> findPeriod(@PathVariable Integer id) {
-        var periods = service.findPeriodByModality(id);
-        return ResponseEntity.ok().body(periods);
     }
 
     @GetMapping(value = "/instructors/{id}")

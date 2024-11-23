@@ -69,7 +69,6 @@ public class SubscriptionService {
         entity.setSubscriptionId(dto.getSubscriptionId());
         entity.setStudentId(dto.getStudentId());
         entity.setPlanId(dto.getPlanId());
-        entity.setPreiodId(dto.getPeriodId());
         entity.setModalityId(dto.getModalityId());
         entity.setSubscriptionStartDate(dto.getSubscriptionStartDate());
         entity.setSubscriptionEndDate(dto.getSubscriptionEndDate());

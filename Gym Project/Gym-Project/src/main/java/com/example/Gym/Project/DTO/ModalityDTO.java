@@ -3,6 +3,7 @@ package com.example.Gym.Project.DTO;
 import com.example.Gym.Project.Model.Days;
 import com.example.Gym.Project.Model.Modality;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModalityDTO {

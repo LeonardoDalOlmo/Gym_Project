@@ -2,10 +2,8 @@ package com.example.Gym.Project.Service;
 
 import com.example.Gym.Project.DTO.InstructorDTO;
 import com.example.Gym.Project.DTO.ModalityDTO;
-import com.example.Gym.Project.DTO.PeriodDTO;
 import com.example.Gym.Project.Model.Instructor;
 import com.example.Gym.Project.Model.Modality;
-import com.example.Gym.Project.Model.Period;
 import com.example.Gym.Project.Repository.ModalityRepository;
 import com.example.Gym.Project.Service.Exceptions.DataBaseException;
 import com.example.Gym.Project.Service.Exceptions.ResourceNotFoundException;
@@ -13,6 +11,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.Gym.Project.DTO.InstructorDTO;
 
 import java.util.List;
 
@@ -39,7 +38,7 @@ public class ModalityService {
     public ModalityDTO insertModality(ModalityDTO dto) {
         Modality modality = new Modality();
         copyDtoToEntity(dto, modality);
-        modalityRepository.save(modality);
+        modality = modalityRepository.save(modality);
         return new ModalityDTO(modality);
     }
 
@@ -67,13 +66,6 @@ public class ModalityService {
         catch (EntityNotFoundException e){
             throw new DataBaseException("Failed to delete resource");
         }
-    }
-
-    @Transactional
-    public List<PeriodDTO> findPeriodByModality(Integer id) {
-        List<Period> periods = modalityRepository.searchPeriodbyModality(id);
-
-        return periods.stream().map(x -> new PeriodDTO(x)).toList();
     }
 
     public List<InstructorDTO> findInstructorByModality(Integer id) {

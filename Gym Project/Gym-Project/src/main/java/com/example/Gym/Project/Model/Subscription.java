@@ -25,16 +25,9 @@ public class Subscription {
     @JoinColumn(name = "studentId")
     private Student studentId;
 
-
     @ManyToOne
     @JoinColumn(name = "planId")
     private Plan planId;
-
-
-    @ManyToOne
-    @JoinColumn(name = "periodId")
-    private Period preiodId;
-
 
     @ManyToOne
     @JoinColumn(name = "modalityId")

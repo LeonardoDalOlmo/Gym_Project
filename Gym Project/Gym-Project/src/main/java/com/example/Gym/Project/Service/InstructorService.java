@@ -86,10 +86,5 @@ public class InstructorService {
         entity.setInstructorPhoneNumber(dto.getInstructorPhoneNumber());
         entity.setInstructorDescription(dto.getInstructorDescription());
         entity.setInstructorSalary(dto.getInstructorSalary());
-        for(ModalityDTO modDTO : dto.getModalityList()){
-            Modality mod = new Modality();
-            mod.setModalityId(modDTO.getModalityId());
-            entity.getModalityList().add(mod);
-        }
     }
 }

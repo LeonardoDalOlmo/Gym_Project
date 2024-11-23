@@ -29,8 +29,6 @@ public class Modality {
     @OneToMany(mappedBy = "modalityId")
     private List<Subscription> subscriptionsList = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "modalityList")
-    private List<Period> periodList;
 
     @ManyToMany(mappedBy = "modalityList")
     private List<Instructor> instructorList;
