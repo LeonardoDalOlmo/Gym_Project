@@ -64,7 +64,7 @@ public class SubscriptionService {
         subscription.setModalityId(modality);
 
 
-        subscriptionRepository.save(subscription);
+        subscription = subscriptionRepository.save(subscription);
         return new SubscriptionDTO(subscription);
     }
 

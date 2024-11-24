@@ -4,10 +4,11 @@ import com.example.Gym.Project.Model.Modality;
 import com.example.Gym.Project.Model.Plan;
 import com.example.Gym.Project.Model.Student;
 import com.example.Gym.Project.Model.Subscription;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
-
+@NoArgsConstructor
 public class SubscriptionDTO {
 
     private Integer subscriptionId;

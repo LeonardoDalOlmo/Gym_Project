@@ -8,8 +8,9 @@ import lombok.Setter;
 
 import java.time.Instant;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
 @Entity
