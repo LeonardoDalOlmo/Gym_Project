@@ -29,12 +29,6 @@ public class InstructorService {
     }
 
     @Transactional
-    public List<ModalityDTO> findModality(Integer id){
-        var instructors = instructorRepository.searchModalitybyInstructor(id);
-        return instructors.stream().map(x -> new ModalityDTO(x)).toList();
-    }
-
-    @Transactional
     public List<InstructorDTO> findAll() {
         List<Instructor> instructors = instructorRepository.findAll();
         return instructors.stream().map(x -> new InstructorDTO(x)).toList();
@@ -75,10 +69,10 @@ public class InstructorService {
     }
 
     @Transactional
-    public List<ModalityDTO> findModalityByInstructor(Integer id){
-        List<Modality> modalities = instructorRepository.searchModalitybyInstructor(id);
+    public List<Integer> findModalityByInstructor(Integer id){
+        List<Integer> modalities = instructorRepository.searchModalitybyInstructor(id);
 
-        return modalities.stream().map(x -> new ModalityDTO(x)).toList();
+        return modalities.stream().toList();
     }
 
     public void copyDtoToEntity(InstructorDTO dto, Instructor entity) {

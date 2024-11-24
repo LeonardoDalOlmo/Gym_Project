@@ -37,8 +37,8 @@ public class InstructorController {
 
     @GetMapping(value = "modalitys/{id}")
     @SecurityRequirement(name = "bearer-key")
-    public ResponseEntity<List<ModalityDTO>> modality(@PathVariable Integer id) {
-        var modalitys = service.findModalityByInstructor(id);
+    public ResponseEntity<List<Integer>> modality(@PathVariable Integer id) {
+        List<Integer> modalitys = service.findModalityByInstructor(id);
         return ResponseEntity.ok().body(modalitys);
     }
 
