@@ -68,9 +68,9 @@ public class StudentService {
     }
 
     @Transactional
-    public List<ModalityDTO> findModalitybyStudent(Integer id){
-        List<Modality> modalities = studentRepository.searchModalitybyStudent(id);
-        return modalities.stream().map(x -> new ModalityDTO(x)).toList();
+    public List<Integer> findModalitybyStudent(Integer id){
+        List<Integer> modalities = studentRepository.searchModalitybyStudent(id);
+        return modalities.stream().toList();
     }
 
     public void copyDtoToEntity(StudentDTO dto, Student entity) {

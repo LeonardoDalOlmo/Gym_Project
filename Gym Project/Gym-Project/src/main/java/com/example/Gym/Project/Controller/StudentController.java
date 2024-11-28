@@ -37,7 +37,7 @@ public class StudentController {
 
     @GetMapping(value = "modalitys/{id}")
     @SecurityRequirement(name = "bearer-key")
-    public ResponseEntity<List<ModalityDTO>> modality(@PathVariable Integer id) {
+    public ResponseEntity<List<Integer>> modality(@PathVariable Integer id) {
         var modalitys = service.findModalitybyStudent(id);
         return ResponseEntity.ok().body(modalitys);
     }

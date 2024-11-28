@@ -1,6 +1,10 @@
 package com.example.Gym.Project.DTO;
 import com.example.Gym.Project.Model.Student;
 import com.example.Gym.Project.Model.StudentStatus;
+import com.example.Gym.Project.Model.Worksheets;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class StudentDTO {
@@ -10,6 +14,7 @@ public class StudentDTO {
     private Integer studentAge;
     private Integer studentPhone;
     private StudentStatus studentStatus;
+    private List<WorksheetsDTO> worksheetsDTOList = new ArrayList<>();
 
     public StudentDTO(Integer studentId, String studentName, Integer studentAge, Integer studentPhone, StudentStatus studentStatus) {
         this.studentId = studentId;
@@ -25,6 +30,7 @@ public class StudentDTO {
         studentAge = entity.getStudentAge();
         studentPhone = entity.getStudentPhone();
         studentStatus = entity.getStudentStatus();
+        entity.getWorksheetsList().forEach(cat -> this.worksheetsDTOList.add(new WorksheetsDTO(cat)));
     }
 
 
@@ -48,5 +54,7 @@ public class StudentDTO {
         return studentId;
     }
 
-
+    public List<WorksheetsDTO> getWorksheetsDTOList() {
+        return worksheetsDTOList;
+    }
 }
